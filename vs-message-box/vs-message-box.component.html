@@ -1,0 +1,30 @@
+
+  <div class="backdrop">
+    <div class="alert-box" *ngFor = "let prop of msgBoxProperties">
+
+        <p [style.background-color] = "bgColor()">Titel: {{ prop.title }}</p>
+
+        <h3> Message BOX </h3>
+       <br>  <br>  
+       <hr>
+
+       <div class="d-flex">
+        <div class="mr-auto">
+            <button class="btn btn-warning btn-sm mr-auto"> {{ prop.icon }} </button>
+        </div>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="mr-0">
+            <div class="btn-toolbar">
+             <button type="button" *ngIf = "prop.btnOK" class="btn btn-primary btn-sm mr" (click) = "btnOK()">{{ prop.btnOK }}</button>
+             <button type="button" *ngIf = "prop.btnAb" class="btn btn-primary btn-sm mr" (click) = "btnAb()">{{ prop.btnAb }}</button>
+             <button type="button" *ngIf = " prop.btnHilfe" class="btn btn-primary btn-sm mr"> {{ prop.btnHilfe }}</button>
+         </div>
+
+       </div>
+
+        
+
+    </div>
+  </div>
+ 
