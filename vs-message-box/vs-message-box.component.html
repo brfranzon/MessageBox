@@ -1,30 +1,31 @@
 
-  <div class="backdrop">
-    <div class="alert-box" *ngFor = "let prop of msgBoxProperties">
+<div class="backdrop">
+    <div class="alert-box">
 
-        <p [style.background-color] = "bgColor()">Titel: {{ prop.title }}</p>
+        <p [style.background-color] = "bgColor"> {{ title }}</p>
 
-        <h3> Message BOX </h3>
+        <h3> {{ msgText }} </h3>
        <br>  <br>  
        <hr>
 
        <div class="d-flex">
         <div class="mr-auto">
-            <button class="btn btn-warning btn-sm mr-auto"> {{ prop.icon }} </button>
+            <!-- <button class="btn btn-warning btn-sm mr-auto"  *ngIf = "icon"> {{ icon }} </button>  -->
         </div>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
         <div class="mr-0">
             <div class="btn-toolbar">
-             <button type="button" *ngIf = "prop.btnOK" class="btn btn-primary btn-sm mr" (click) = "btnOK()">{{ prop.btnOK }}</button>
-             <button type="button" *ngIf = "prop.btnAb" class="btn btn-primary btn-sm mr" (click) = "btnAb()">{{ prop.btnAb }}</button>
-             <button type="button" *ngIf = " prop.btnHilfe" class="btn btn-primary btn-sm mr"> {{ prop.btnHilfe }}</button>
-         </div>
+             <button type="button" *ngIf = "btnIsVisibleOK" class="btn btn-primary btn-sm mr"
+              (click) = "btnOnClickOK()"> OK </button>
+
+              <button type="button" *ngIf = "btnIsVisibleCancel" class="btn btn-primary btn-sm mr"
+              (click) = "btnOnClickCancel()"> Abbrechen </button>
+
+         </div> 
 
        </div>
-
-        
+       
 
     </div>
   </div>
- 
