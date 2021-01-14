@@ -1,30 +1,41 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from  '@angular/core';
-import { TvsMessageBox } from '../vs-message-box.class';
+// import { TvsMessageBoxParams } from '../vs-message-box.class';
+
+
+// enumeration
+export enum TvsMessageBoxKind{
+  mbkInfo         = "mbkInfo",
+  mbkError        = "mbkError",
+  mbkConfirmation = "mbkConfirmation"
+}
+
 
 @Component({
   selector: 'vs-message-box',
   templateUrl: './vs-message-box.component.html',
   styleUrls: ['./vs-message-box.component.css']
 })
-export class TvsMessageBoxComponent {
+export class TvsMessageBox {
 
-  @Input()  msgBoxProperties: TvsMessageBox[] = [];
-  @Output() NotshowMsgBox = new EventEmitter(); 
-  @Output() onClickOK = new EventEmitter(); 
+  // Message Box Properties
+  msgText:                   string;
+  title:                     string;
+  btnIsVisibleOK:            boolean;
+  btnIsVisibleCancel:        boolean;
+  bgColor:                   string;
+  icon:                      string;
+  
 
+  @Output() btnEventOnClickOK      = new EventEmitter(); 
+  @Output() btnEventOnClickCancel  = new EventEmitter(); 
 
-  bgColor(){
-    return `${this.msgBoxProperties[0].bgColor}`;
+ 
+  btnOnClickCancel(){
+    this.btnEventOnClickCancel.emit(false);
   }
 
-  btnAb(){
-    console.log('abbrechen');
-    this.NotshowMsgBox.emit();
-  }
-
-  btnOK(){
-    console.log('OK');
-    this.onClickOK.emit();
+  btnOnClickOK(){
+    this.btnEventOnClickOK.emit(true);
   }
 }
